@@ -1,0 +1,18 @@
+﻿@using System.Security.Claims;
+
+@using Microsoft.AspNetCore.Identity;
+
+@inject SignInManager<IdentityUser> _signinmanager;
+
+@{
+    ViewData["Title"] = "Welcome";
+}
+
+<h1>Welcome &nbsp; @ViewBag.message</h1>
+
+@if (_signinmanager.IsSignedIn(User))
+{
+    <form method="post" asp-controlle="IdentityUsers" asp-action="Logout" >
+        <input type="submit" value="Logout"/>
+    </form>
+}
